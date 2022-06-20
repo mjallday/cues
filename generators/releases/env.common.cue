@@ -11,15 +11,29 @@ env: *"" | string @tag(env,short=staging|production)
 releases: [...release.#Release]
 
 // Podinfo base definition.
-#Podinfo: release.#Release & {
+#VGSHTTPApp: release.#Release & {
 	spec: {
-		name:      "podinfo"
-		namespace: "dev-apps"
+		namespace: 	"dev-apps"
 		repository: {
-			url: "https://stefanprodan.github.io/podinfo"
+			url: "https://github.com/verygood-ops/vgs-charts"
 		}
 		chart: {
-			name: "podinfo"
+			name: "vgs-app-http"
+			version: "6.1.x"
+		}
+	}
+}
+
+// Podinfo base definition.
+#VGSWorkerApp: release.#Release & {
+	spec: {
+		namespace: 	"dev-apps"
+		repository: {
+			url: "https://github.com/verygood-ops/vgs-charts"
+		}
+		chart: {
+			name: "vgs-app-worker"
+			version: "6.1.x"
 		}
 	}
 }
